@@ -2,20 +2,26 @@
   "name": "polymer-firebase-collection-input",
   "version": "0.0.1",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "Dustin Gulley dlgulley411@gmail.com"
   ],
-  "description": "An element providing a solution to no problem in particular.",
+  "description": "A polymer element to add/remove items from a firebase-collection element",
   "keywords": [
-    "web-component",
     "polymer",
-    "seed"
+    "firebase",
+    "firebase-collection",
+    "input"
   ],
   "main": "polymer-firebase-collection-input.html",
-  "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "license": "LICENSE.txt",
+  "homepage": "https://github.com/vision89/polymer-firebase-collection-input",
   "ignore": [
     "/.*",
-    "/test/"
+    "/test/",
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
   ],
   "dependencies": {
     "firebase-element": "GoogleWebComponents/firebase-element#~1.0.6",
