@@ -25,7 +25,6 @@
   ],
   "dependencies": {
     "firebase-element": "GoogleWebComponents/firebase-element#~1.0.6",
-    "grid-style": "polymer-grid-style#*",
     "iron-icon": "PolymerElements/iron-icon#~1.0.4",
     "iron-icons": "PolymerElements/iron-icons#~1.0.3",
     "paper-card": "PolymerElements/paper-card#~1.0.5",
