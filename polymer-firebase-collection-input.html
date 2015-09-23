@@ -251,7 +251,7 @@ Example:
 
     </div>
 
-    <firebase-collection id="firebaseId" location="{{firebaseUrl}}" data="{{collection}}"></firebase-collection>
+    <firebase-collection id="firebaseId" location="{{firebaseUrl}}" data="{{collection}}" on-firebase-value="{{valueAdded}}"></firebase-collection>
 
   </template>
 
@@ -300,6 +300,12 @@ Example:
 
     },
 
+    valueAdded: function ( e ) {
+
+      this.fire( 'firebase-value', e );
+
+    },
+
     /**
      * Save button clicked
      * @return {[type]} [description]
@@ -307,7 +313,7 @@ Example:
     saveClicked: function () {
 
       this.$.firebaseId.add( this.newTag );
-      this.newTag = '';
+      this.newTag = '';d
 
     },
 
