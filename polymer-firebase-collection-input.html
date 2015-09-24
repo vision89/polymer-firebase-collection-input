@@ -296,6 +296,27 @@ Example:
         notify: true,
         reflectToAttribute: true
 
+      },
+
+      disconnect: {
+
+        type: Boolean,
+        value: false,
+        notify: true,
+        reflectToAttribute: true,
+        observe: '_disconnect'
+
+      }
+
+    },
+
+    _disconnect: function ( val ) {
+
+      if ( val === true ) {
+
+        this.$.firebaseId.disconnect();
+        this.disconnect = false;
+
       }
 
     },
@@ -359,6 +380,7 @@ Example:
       // removed from a document.
       //
       // Use this to clean up anything you did in `attached`.
+      this.$.firebaseId.disconnect();
     }
 
   });
