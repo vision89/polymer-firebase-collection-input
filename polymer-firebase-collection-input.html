@@ -23,11 +23,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <!--
-An element providing a solution to no problem in particular.
+An element that allows you to input and delete elements in a collection.  It works
+similarly to a tag input system.
 
 Example:
 
-    <polymer-firebase-collection-input></polymer-firebase-collection-input>
+    <polymer-firebase-collection-input label="Collection Test:" paper-input-label="Name" 
+      firebase-url="[[firebaseUrl]]" collection="{{data}}"></polymer-firebase-collection-input>
 
 @group Seed Elements
 @element polymer-firebase-collection-input
@@ -222,7 +224,7 @@ Example:
 
       <span class="col-2">
 
-        <paper-fab icon="save" on-click="saveClicked" disabled$="[[!newTag]]" animated></paper-fab>
+        <paper-fab icon="save" on-click="_saveClicked" disabled$="[[!newTag]]" animated></paper-fab>
 
       </span>
 
@@ -238,7 +240,7 @@ Example:
 
             <paper-card elevation="1"> 
 
-              <div class="card-content"><span>[[item.value]]</span> <paper-icon-button icon="highlight-off" on-click="deleteTag"></paper-icon-button> </div>
+              <div class="card-content"><span>[[item.value]]</span> <paper-icon-button icon="highlight-off" on-click="_deleteTag"></paper-icon-button> </div>
 
             </paper-card>
 
@@ -250,7 +252,7 @@ Example:
 
     </div>
 
-    <firebase-collection id="firebaseId" location="{{firebaseUrl}}" data="{{collection}}" on-firebase-value="valueAdded"></firebase-collection>
+    <firebase-collection id="firebaseId" location="{{firebaseUrl}}" data="{{collection}}" on-firebase-value="_valueAdded"></firebase-collection>
 
   </template>
 
@@ -263,7 +265,10 @@ Example:
     is: 'polymer-firebase-collection-input',
 
     properties: {
-
+      
+      /**
+       * Will show above the collection input
+      */
       label: {
 
         type: String,
@@ -271,7 +276,10 @@ Example:
         notify: false
 
       },
-
+      
+      /**
+       * Displays as the default text in the collection input
+       */
       paperInputLabel: {
 
         type: String,
@@ -280,6 +288,9 @@ Example:
 
       },
 
+      /**
+       * The firebase url the collection input will talk to
+       */ 
       firebaseUrl: {
 
         type: String,
@@ -287,7 +298,10 @@ Example:
         notify: false
 
       },
-
+      
+      /**
+       * The collection items
+       */ 
       collection: {
 
         type: Array,
@@ -295,32 +309,23 @@ Example:
         notify: true,
         reflectToAttribute: true
 
-      },
-
-      disconnect: {
-
-        type: Boolean,
-        value: false,
-        notify: true,
-        reflectToAttribute: true,
-        observe: '_disconnect'
-
       }
 
     },
+    
+    /**
+     * Disconnect the firebase connection
+     */ 
+    disconnect: function ( val ) {
 
-    _disconnect: function ( val ) {
-
-      if ( val === true ) {
-
-        this.$.firebaseId.disconnect();
-        this.disconnect = false;
-
-      }
+      this.$.firebaseId.disconnect();
 
     },
-
-    valueAdded: function ( e ) {
+    
+    /**
+     * Called anytime a value has been added to the collection
+     **/ 
+    _valueAdded: function ( e ) {
 
       this.fire( 'firebase-value', e );
 
@@ -330,7 +335,7 @@ Example:
      * Save button clicked
      * @return {[type]} [description]
      */
-    saveClicked: function () {
+    _saveClicked: function () {
 
       this.$.firebaseId.add( this.newTag );
       this.newTag = '';d
@@ -342,7 +347,7 @@ Example:
      * @param  {[type]} e [description]
      * @return {[type]}   [description]
      */
-    deleteTag: function ( e ) {
+    _deleteTag: function ( e ) {
 
       var index = this.collection.indexOf( e.model.item );
 

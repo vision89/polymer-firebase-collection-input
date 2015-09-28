@@ -20,12 +20,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <template is="dom-bind" id="app">
 
-      <firebase-google-login-button  firebase-url="[[firebaseUrl]]" user="{{user}}"
-        on-google-logged-in="googleLoggedIn" on-google-logged-out="googleLoggedOut">
-        </firebase-google-login-button>
-
       <polymer-firebase-collection-input label="Collection Test:" paper-input-label="Name" 
-      firebase-url="[[collectionUrl]]" collection="{{data}}"></polymer-firebase-collection-input>
+      firebase-url="[[firebaseUrl]]" collection="{{data}}"></polymer-firebase-collection-input>
 
     </template>
 
@@ -35,27 +31,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         var app = document.querySelector( '#app' );
 
-        app.firebaseUrl = '<Your-App>.firebaseIO.com';
-
-        /**
-         * Logged in
-         * @return {[type]} [description]
-         */
-        app.googleLoggedIn = function () {
-
-          app.collectionUrl = app.firebaseUrl + '/' + app.user.uid + '/categories';
-
-        };
-
-        /**
-         * Logged out
-         * @return {[type]} [description]
-         */
-        app.googleLoggedOut = function () {
-
-          app.collectionUrl = '';
-
-        };
+        app.firebaseUrl = 'collection-input.firebaseIO.com/collection';
 
       })( document );
       
