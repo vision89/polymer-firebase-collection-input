@@ -8,4 +8,4 @@ A polymer element for helping to add/remove items from a firebase-collection ele
 
 ## Documentation & Demo
 
-    http://vision89.github.io/polymer-firebase-collection-input/components/polymer-firebase-collection-input/
+  http://vision89.github.io/polymer-firebase-collection-input/components/polymer-firebase-collection-input/
