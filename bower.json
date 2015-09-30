@@ -1,6 +1,6 @@
 {
   "name": "polymer-firebase-collection-input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "Dustin Gulley dlgulley411@gmail.com"
   ],
@@ -9,7 +9,8 @@
     "polymer",
     "firebase",
     "firebase-collection",
-    "input"
+    "input",
+    "web-components"
   ],
   "main": "polymer-firebase-collection-input.html",
   "license": "LICENSE.txt",
